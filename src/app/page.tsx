@@ -1,46 +1,36 @@
-import { Nav, Col, Container, Image, Row } from 'react-bootstrap';
-import { PeopleFill, FileEarmarkTextFill, CalendarCheckFill } from 'react-bootstrap-icons'
-import {Contact} from '@/lib/validationSchemas'
-import ContactCard from '@/components/ContactCard'
-
-const contacts: Contact[] = [{
-    firstName: 'Philip', lastName: 'Johnson', address: 'POST 307, University of Hawaii',
-    image: 'https://github.com/philipmjohnson.png',
-    description: 'I am a Professor of Information and Computer Sciences at the University of Hawaii, Director ' +
-    'of the Collaborative Software Development Laboratory, and the CEO of OpenPowerQuality.com.',
-  },
-    {
-      firstName: 'Henri', lastName: 'Casanova', address: 'POST 307, University of Hawaii',
-      image: 'https://avatars0.githubusercontent.com/u/7494478?s=460&v=4',
-      description: 'I am originally from France. I maintain a list of reports from my surf sessions. I have proof ' +
-      'that I ran the Hana relay with an actual Team.',
-    },
-    {
-      firstName: 'Kim', lastName: 'Binsted', address: 'POST 307, University of Hawaii',
-      image: 'https://www.ics.hawaii.edu/wp-content/uploads/2013/08/kim_binsted-square-300x300.jpg',
-      description: 'Kim Binsted received her BSc in Physics at McGill (1991), and her PhD in Artificial Intelligence' +
-      'from the University of Edinburgh (1996). Her thesis topic was the computational modeling and generation of ' +
-      'punning riddles, and her program, JAPE (Joke Analysis and Production Engine), generated puns such as ' +
-      '"What do you call a Martian who drinks beer? An ale-ien!".',
-    },
-  ];
+import { Col, Container, Row } from 'react-bootstrap';
+import { Calendar2CheckFill, FileEarmarkTextFill, PeopleFill } from 'react-bootstrap-icons';
 
 /** The Home page. */
 const Home = () => (
   <main>
-    <Container id="list" fluid className="py-3">
-      <Row>
-        <Col>
-        <h1 className="text-center">List Contacts</h1>
-        <Row xs={1} md={2} lg={3} className="g-4">
-          {contacts.map((contact) => (
-            <Col key={contact.firstName + contact.lastName}>
-                 <ContactCard contact={contact}/>
-            </Col>
-           )) }
+    <Container id="landing-page" fluid className="py-3">
+      <Container>
+        <Row className="align-middle text-center">
+          <Col xs={4}>
+            <PeopleFill size={100} />
+            <h1>Multiple Users</h1>
+            <h5>
+              This address book enables any number of users to register and save their business contacts. You can only
+              see the contacts you have created.
+            </h5>
+          </Col>
+          <Col xs={4}>
+            <FileEarmarkTextFill size={100} />
+            <h1>Contact Details</h1>
+            <h5>For each contact, you can save their name, address, and phone number.</h5>
+          </Col>
+
+          <Col xs={4}>
+            <Calendar2CheckFill size={100} />
+            <h1>Timestamped Notes</h1>
+            <p>
+              Each time you make contact with a contact, you can write a note that summarizes the conversation. This
+              note is saved along with a timestamp with the contact.
+            </p>
+          </Col>
         </Row>
-        </Col>
-      </Row>
+      </Container>
     </Container>
   </main>
 );
