@@ -1,48 +1,51 @@
-import { Col, Container, Row, Table } from 'react-bootstrap';
-import { prisma } from '@/lib/prisma';
-import StuffItem from '@/components/StuffItem';
+import { Col, Container, Row } from 'react-bootstrap';
 import { loggedInProtectedPage } from '@/lib/page-protection';
-import { auth } from '@/lib/auth';
+import { auth } from '@/app/api/auth/[...nextauth]/route';
+import { Contact } from '@/lib/validationSchemas';
+import ContactCard from '@/components/ContactCard';
+import { prisma } from '@/lib/prisma';
 
-/** Render a list of stuff for the logged in user. */
+/** Render a list of contacts for the logged in user. */
 const ListPage = async () => {
-  // Protect the page, only logged in users can access it.
   const session = await auth();
+
   loggedInProtectedPage(
     session as {
-      user: { email: string; id: string; name: string };
+      user: {
+        email: string;
+        id: string;
+        name?: string;
+        randomKey?: string;
+      };
     } | null,
   );
-  const owner = (session && session.user && session.user.email) || '';
-  const stuff = await prisma.stuff.findMany({
+
+  const owner = session?.user?.email ?? '';
+
+  const contacts: Contact[] = await prisma.contact.findMany({
     where: {
       owner,
     },
   });
-  // console.log(stuff);
+
   return (
     <main>
       <Container id="list" fluid className="py-3">
-        <Row>
-          <Col>
-            <h1>Stuff</h1>
-            <Table striped bordered hover>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Quantity</th>
-                  <th>Condition</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {stuff.map((item) => (
-                  <StuffItem key={item.id} {...item} />
+        <Container>
+          <Row>
+            <Col>
+              <h1 className="text-center">List Contacts</h1>
+
+              <Row xs={1} md={2} lg={3} className="g-4">
+                {contacts.map((contact, index) => (
+                  <Col key={index}>
+                    <ContactCard contact={contact} />
+                  </Col>
                 ))}
-              </tbody>
-            </Table>
-          </Col>
-        </Row>
+              </Row>
+            </Col>
+          </Row>
+        </Container>
       </Container>
     </main>
   );
