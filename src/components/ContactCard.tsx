@@ -10,7 +10,7 @@ import AddNoteForm from './AddNoteForm';
 const ContactCard = ({ contact, notes = [] }: { contact: Contact; notes?: Note[] }) => (
   <Card className="h-100">
     <Card.Header>
-      <Image src={contact.image} width={75} />
+      <Image src={contact.image} width={75} alt="picture"/>
       <Card.Title>
         {contact.firstName}
         &nbsp;

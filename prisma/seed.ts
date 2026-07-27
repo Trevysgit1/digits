@@ -35,31 +35,6 @@ async function main() {
     });
   }
 
-  for (const [index, data] of config.defaultData.entries()) {
-    let condition: Condition = 'good';
-
-    if (data.condition === 'poor') {
-      condition = 'poor';
-    } else if (data.condition === 'excellent') {
-      condition = 'excellent';
-    } else {
-      condition = 'fair';
-    }
-
-    console.log(`  Adding stuff: ${data.name} (${data.owner})`);
-
-    await prisma.stuff.upsert({
-      where: { id: index },
-      update: {},
-      create: {
-        name: data.name,
-        quantity: data.quantity,
-        owner: data.owner,
-        condition,
-      },
-    });
-  }
-
 for (const contact of config.defaultContacts) {
   console.log(`  Adding contact: ${contact.firstName} ${contact.lastName}`);
 
