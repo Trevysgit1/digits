@@ -52,3 +52,24 @@ When you first bring up the application, you will see the landing pages that pro
 
 Register
 If you do not have an account on the system, you can register by clicking on "Login", then "Sign Up":
+<img src="doc/Register.png">
+
+Sign in
+Click on the Login link, then click on the Sign in link to bring up the Sign In page which allows you to login:
+<img src="doc/SignIn.png">
+
+User home page
+After successfully logging in, the system takes you to your home page. It is just like the landing page, but the NavBar contains links to list contact and add new contacts:
+<img src="doc/UserHomePage.png">
+
+List Contacts
+Clicking on the List Contacts link brings up a page that lists all of the contacts associated with the logged in user:
+<img src="doc/ListContacts.png">
+
+Edit Contacts
+From the List Contacts page, the user can click the “Edit” link associated with any Contact to bring up a page that allows that Contact information to be edited:
+<img src="doc/EditContacts.png">
+
+Admin mode
+It is possible to designate one or more users as “Admins” through the settings file. When a user has the Admin role, they get access to a special NavBar link that retrieves a page listing all Contacts associated with all users:
+<img src="doc/AdminMode.png">
