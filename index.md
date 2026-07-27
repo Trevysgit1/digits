@@ -68,7 +68,7 @@ Clicking on the List Contacts link brings up a page that lists all of the contac
 
 Edit Contacts
 From the List Contacts page, the user can click the “Edit” link associated with any Contact to bring up a page that allows that Contact information to be edited:
-<img src="doc/EditContacts.png">
+<img src="doc/EditContact.png">
 
 Admin mode
 It is possible to designate one or more users as “Admins” through the settings file. When a user has the Admin role, they get access to a special NavBar link that retrieves a page listing all Contacts associated with all users:
