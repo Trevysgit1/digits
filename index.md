@@ -1,4 +1,4 @@
-##digits application
+## digits application
 
 <img src="doc/homepage.png">
 
@@ -7,7 +7,7 @@ Digits is an application that allows users to:
 - Create and manage a set of contacts
 - Add a set of timestamped notes regarding their interactions with each contact
 
-##Installation
+## Installation
 First, install packages
 ````
 $ npm install
